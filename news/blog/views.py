@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
+from .models import News
 
 
 def index(request):
-    return render(request, 'index.html')
+
+    content = {
+        'newsData': News.objects.all()
+    }
+    return render(request, 'index.html',content)
 
 
 def about(request):
